@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.jsのサンブル4</title>
+    <style>
+    .alert {
+        background-color: aqua;
+        padding: 10px;
+        border: 1px solid fuchsia;
+    }
+    </style>
+</head>
+<body>
+
+    <div id='app'>
+        <alert-box>〇〇が入力されていません</alert-box>
+        <alert-box>〇〇が入力されていません</alert-box>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script>
+        Vue.component('alert-box', {
+            template:`
+            <div class="alert" v-on:click="caution">
+                <strong>Error!</strong>
+                <slot></slot>
+            </div>
+            `,
+            methods:{
+                caution: function(){
+                    alert("you are click now");
+                }
+            }
+        }
+
+        )
+        var app = new Vue({
+            el:"#app" // app 内にVue.js を制御すること
+            
+        });
+    </script>
+</body>
+</html>
